@@ -1,0 +1,97 @@
+#include <iostream>
+#include <vector>
+#include <string>
+
+class student {
+public:
+    std::string name;
+    int age;
+    std::vector<int> grades;
+
+    student(std::string n, int a, std::vector<int> g) : name(n), age(a), grades(g) {}
+}
+};
+
+std::vector<student> students;
+
+void add_student(std::string name, int age, std::vector<int> grades) {
+    students.push_back(student(name, age, grades));
+}
+
+void view_students() {
+    for (const auto& s : students) {
+        std::cout << "Name: " << s.name << ", Age: " << s.age << ", Grades: ";
+        for (const auto& grade : s.grades) {
+            std::cout << grade << " ";
+        }
+        std::cout << std::endl;
+    }
+}
+
+int main() {{
+    int choice;
+    do {
+        std::cout << "1. Add Student\n2. View Students\n3. Exit\nEnter your choice: ";
+        std::cin >> choice;
+
+        if (choice == 1) {
+            std::string name;
+            int age, num_grades;
+            std::vector<int> grades;
+
+            std::cout << "Enter name: ";
+            std::cin >> name;
+            std::cout << "Enter age: ";
+            std::cin >> age;
+            std::cout << "Enter number of grades: ";
+            std::cin >> num_grades;
+
+            for (int i = 0; i < num_grades; ++i) {
+                int grade;
+                std::cout << "Enter grade " << i + 1 << ": ";
+                std::cin >> grade;
+                grades.push_back(grade);
+            }
+
+            add_student(name, age, grades);
+        } else if (choice == 2) {
+            view_students();
+        }
+    } while (choice != 3);  
+}}
+void add student() {
+    std::string name;
+    int age, num_grades;
+    std::vector<int> grades;
+
+    std::cout << "Enter name: ";
+    std::cin >> name;
+    std::cout << "Enter age: ";
+    std::cin >> age;
+    std::cout << "Enter number of grades: ";
+    std::cin >> num_grades;
+
+    for (int i = 0; i < num_grades; ++i) {
+        int grade;
+        std::cout << "Enter grade " << i + 1 << ": ";
+        std::cin >> grade;
+        grades.push_back(grade);
+    }
+
+    add_student(name, age, grades);
+}
+student.emplace_back(name, age, grades);
+int main() {
+    int choices;
+    do {
+        std::cout << "1. Add Student\n2. View Students\n3. Exit\nEnter your choice: ";
+        std::cin >> choices;
+
+        if (choices == 1) {
+            add_student();
+        } else if (choices == 2) {
+            view_students();
+        }
+    } while (choices != 3);
+}
+return 0;
